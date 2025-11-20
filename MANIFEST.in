@@ -1,1 +1,5 @@
+recursive-include datasets *
+recursive-include models *
+
+recursive-include cisca *.yaml *.yml *.png *.jpg *.jpeg *.tif *.tiff *.json *.txt *.hdf5
 
