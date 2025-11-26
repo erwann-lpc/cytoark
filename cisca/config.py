@@ -311,7 +311,7 @@ class ConfigCISCA(BaseConfig):
 
         if self.raw_input_side <= self.input_shape[0]:
             self.random_crop = False
-        # self.data_folder = "D:\\NucleiSegmentation\\Projects\\CISCA\\NeuronInstanceSeg-master\\NeuronInstanceSeg-master\\datasets\\conic"
+        self.data_folder = "/home/el283671/Téléchargements/"
         self.update_string_ID()
 
     def update_string_ID(self):
