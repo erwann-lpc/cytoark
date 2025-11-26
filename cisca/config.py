@@ -174,8 +174,8 @@ class ConfigCISCA(BaseConfig):
 
         super().__init__()
 
-        # folders
-        self.root_folder = "/home/el283671/Téléchargements/"
+        # foldersz
+        self.root_folder = pathlib.Path(__file__).parents[1]
         self.dataset_name = "conic"
         self.magnification = "20x"
         self.raw_input_side = 512
