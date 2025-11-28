@@ -248,7 +248,8 @@ class DataGeneratorCISCA(tf.keras.utils.Sequence):
             if os.path.exists(filename):
                 labelmap = cv2.imread(filename, -1)
             else:
-                labelmap = np.zeros(shape=img.shape).astype(int)
+                #labelmap = np.zeros(shape=img.shape).astype(int) EL
+                labelmap = np.zeros(img.shape[:2], dtype=int) 
                 print(
                     f"File {filename} not found, loading zero placeholder as label map"
                 )
@@ -595,7 +596,13 @@ class DataGeneratorCISCA(tf.keras.utils.Sequence):
                     y[i] = msk
 
         if self.load_mode == "test":
-            return X.astype(np.float32), (y_label_map.astype(np.float32), names)
+            #return X.astype(np.float32), (y_label_map.astype(np.float32), names)
+            if self.with_label_map:
+            # Cas "classique" CISCA : images + label map + noms
+                return X.astype(np.float32), (y_label_map.astype(np.float32), names)
+            else:
+            # Cas inference sans labels : on ne renvoie que les images
+                return X.astype(np.float32)
         elif self.with_original and self.with_label_map:
             return (
                 X.astype(np.float32),
